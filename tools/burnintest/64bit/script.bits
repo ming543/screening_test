@@ -1,0 +1,10 @@
+#EXECUTE "rm" "/tmp/bi.log"
+#SETSERIAL "12345"
+SETLOG "/tmp/bi.log"
+#RUN CONFIG
+#LOAD "/home/production/hw_test/tools/burnintest/64bit/u7-100-232.cfg"
+LOAD "/home/production/hw_test/tools/burnintest/64bit/u7-100-232-lan.cfg"
+SETDURATION 0.1
+RUN CONFIG
+EXIT
+ 

@@ -1,0 +1,304 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+   <title>Scripting</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="description" content="" />
+   <meta name="picture" content="" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "scripting.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#649CCC">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Scripting</span></h1>
+
+    </td>
+    <td style="text-align:right">
+     <a href="overview.htm">Top</a>&nbsp;
+     <a href="menu_options.htm">Previous</a>&nbsp;
+     <a href="advanced_options.htm">Next</a>
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p>BurnInTest includes a simple scripting language that allows tests to be executed in a sequence. </p>
+<p>A PASS/FAIL indication for all of the tests included in the script can be displayed at the end of the scripted test run. To achieve this you should select “Accumulate logs until manually cleared” from the Logging Preferences and results should be cleared before or at the start of the scripted test run. </p>
+<p>&nbsp;</p>
+<p>Script files are ASCII text files that you can create with a text editor (e.g. notepad). The file name must end with the extension ‘.bits’. To start a script use the ‘Test / Execute script’ menu item.</p>
+<p>&nbsp;</p>
+<p>Each script command must appear on its own line in the text file and the entire command must appear on a single line. (i.e. a single command can not be split across multiple lines).</p>
+<p>&nbsp;</p>
+<p>The command and its parameters must be separated by one or more spaces. Comments can be included by starting the line with the ‘#’ character.</p>
+<p>&nbsp;</p>
+<p>The scripting is similar to the Windows version of BurnInTest but a few keywords are not available (REBOOT, REBOOTEND, SETPLUGIN, EXECUTEWAIT).</p>
+<p>The following commands are available in the current version of the software</p>
+<p>&nbsp;</p>
+<h2 class="p_Heading2"><span class="f_Heading2">EXECUTE COMMAND</span></h2>
+<p><span style="font-style: italic;">Overview:</span></p>
+<p style="margin: 0px 0px 0px 24px;">Executes an external file and continues processing the script.</p>
+<p>&nbsp;</p>
+<p><span style="font-style: italic;">Syntax:</span></p>
+<p style="margin: 0px 0px 0px 24px;">EXECUTE &lt;Filename&gt; &lt;Parameters&gt;</p>
+<p style="margin: 0px 0px 0px 24px;">&nbsp;</p>
+<p><span style="font-style: italic;">Parameters:</span></p>
+<p style="margin: 0px 0px 0px 24px;">&lt;Filename&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;The name of the file to execute. The file name must be enclosed in double quotes (“”). The file must be an executable.</p>
+<p style="margin: 0px 0px 0px 24px;">&lt;Parameters&gt; &nbsp; &nbsp; &nbsp; &nbsp;Any command line parameters which you wish to pass to your executable. Each new parameter should be separated with a ',' character , eg param1,param2.</p>
+<p style="margin: 0px 0px 0px 24px;">&nbsp;</p>
+<p><span style="font-style: italic;">Examples:</span></p>
+<p>#Start up text editor with some results before starting tests.</p>
+<p style="margin: 0px 0px 0px 24px;">EXECUTE &quot;/usr/bin/emacs&quot; &quot;/tmp/doc.txts&quot;</p>
+<p style="margin: 0px 0px 0px 24px;">RUN CONFIG</p>
+<p style="margin: 0px 0px 8px 38px;"><span style="color: #000000;">&nbsp;</span></p>
+<h2 class="p_Heading2"><span class="f_Heading2">EXIT COMMAND</span></h2>
+<p><span style="font-style: italic;">Syntax:</span></p>
+<p style="margin: 0px 0px 0px 24px;">EXIT</p>
+<p>&nbsp;</p>
+<p><span style="font-style: italic;">Parameters:</span></p>
+<p style="margin: 0px 0px 0px 24px;">none &nbsp; &nbsp; &nbsp; &nbsp;</p>
+<p style="margin: 0px 0px 0px 24px;">Note: BurnInTest will exit with a return code indicating whether the tests run during the script passed or failed. An exit code of 0 means SUCCESS, while and exit code of 1 means FAILURE.</p>
+<p>&nbsp;</p>
+<p><span style="font-style: italic;">Examples:</span></p>
+<p style="margin: 0px 0px 0px 24px;">RUN CONFIG</p>
+<p style="margin: 0px 0px 0px 24px;">#Exit BurnInTest and return an exit code to the batch file</p>
+<p style="margin: 0px 0px 0px 24px;">EXIT</p>
+<p style="margin: 0px 0px 8px 38px;"><span style="color: #000000;">&nbsp;</span></p>
+<h2 class="p_Heading2"><span class="f_Heading2">LOAD COMMAND</span></h2>
+<p><span style="font-style: italic;">Syntax:</span></p>
+<p style="margin: 0px 0px 0px 24px;">LOAD &nbsp;&quot;&lt;File name&gt;&quot;</p>
+<p style="margin: 0px 0px 0px 24px;">&nbsp;</p>
+<p><span style="font-style: italic;">Parameters:</span></p>
+<p style="margin: 0px 0px 0px 24px;">&lt;File name&gt; &nbsp; &nbsp; &nbsp; &nbsp;The full path name to a configuration file. This configuration file is expected to be in BurnInTest binary format (previously created from within BurnInTest GUI version). A partial path name can be used to load a configuration file from the BurnInTest executable directory. A loaded configuration file will over write all preferences currently selected. &nbsp;The file name must be enclosed in double quotes (“”)</p>
+<p style="margin: 0px 0px 0px 24px;">&nbsp;</p>
+<p><span style="font-style: italic;">Examples:</span></p>
+<p style="margin: 0px 0px 0px 24px;">#Load the low load configuration file that we created earlier</p>
+<p style="margin: 0px 0px 0px 24px;">LOAD “/tmp/LowLoad.bitcfg”</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2 class="p_Heading2"><span class="f_Heading2">LOADXML COMMAND</span></h2>
+<p><span style="font-style: italic;">Syntax:</span></p>
+<p style="margin: 0px 0px 0px 24px;">LOADXML &nbsp;&quot;&lt;File name&gt;&quot;</p>
+<p style="margin: 0px 0px 0px 24px;">&nbsp;</p>
+<p><span style="font-style: italic;">Parameters:</span></p>
+<p style="margin: 0px 0px 0px 24px;">&lt;File name&gt; &nbsp; &nbsp; &nbsp; &nbsp;The full path name to a configuration file. This configuration file is expected to be in BurnInTest text format, such as one created for use with the BurnInTest command line version. A partial path name can be used to load a configuration file from the current BurnInTest executable directory. A loaded configuration file will over write all preferences currently selected. &nbsp;The file name must be enclosed in double quotes (“”)</p>
+<p style="margin: 0px 0px 0px 24px;">&nbsp;</p>
+<p><span style="font-style: italic;">Examples:</span></p>
+<p style="margin: 0px 0px 0px 24px;">#Load the low load configuration file that we created earlier</p>
+<p style="margin: 0px 0px 0px 24px;">LOAD “/tmp/LowLoad.txt</p>
+<p style="margin: 0px 0px 0px 24px;">&nbsp;</p>
+<h2 class="p_Heading2"><span class="f_Heading2">LOG COMMAND</span></h2>
+<p><span style="font-style: italic;">Overview:</span></p>
+<p style="margin: 0px 0px 0px 24px;">Writes text to the detailed error and status log history.</p>
+<p style="margin: 0px 0px 0px 24px;">&nbsp;</p>
+<p><span style="font-style: italic;">Syntax:</span></p>
+<p style="margin: 0px 0px 0px 24px;">LOG &lt;Text&gt;</p>
+<p style="margin: 0px 0px 0px 24px;">&nbsp;</p>
+<p><span style="font-style: italic;">Parameters:</span></p>
+<p style="margin: 0px 0px 0px 24px;">Text &nbsp; &nbsp; &nbsp; &nbsp;The text to be added to the detailed error and status log history.</p>
+<p style="margin: 0px 0px 0px 24px;">&nbsp;</p>
+<p><span style="font-style: italic;">Examples:</span></p>
+<p style="margin: 0px 0px 0px 24px;">#Start an S1 sleep and log the start and stop times</p>
+<p style="margin: 0px 0px 0px 24px;">LOG &quot;Sleep S1 Duration 60 seconds starting&quot;</p>
+<p style="margin: 0px 0px 0px 24px;">EXECUTEWAIT SLEEPER -S1 -D 60</p>
+<p style="margin: 0px 0px 0px 24px;">LOG &quot;Sleep S1 Duration 60seconds complete&quot;</p>
+<p style="margin: 7px 0px 7px 0px;"><span style="color: #000000;">&nbsp;</span></p>
+<h2 class="p_Heading2"><span class="f_Heading2">LOOP</span></h2>
+<p><span style="font-style: italic;">Syntax:</span></p>
+<p style="margin: 0px 0px 0px 24px;">LOOP &lt;number of iterations&gt;</p>
+<p style="margin: 0px 0px 0px 24px;"><span style="width:24px;display:inline-block">&nbsp;</span>&lt;Tasks to repeat&gt;</p>
+<p style="margin: 0px 0px 0px 24px;">}</p>
+<p style="margin: 0px 0px 0px 24px;">&nbsp;</p>
+<p><span style="font-style: italic;">Parameters:</span></p>
+<p>&lt; number of iterations &gt; &nbsp; &nbsp; &nbsp; &nbsp;The number of times the Tasks within brackets will be repeated.</p>
+<p>&nbsp;</p>
+<p><span style="font-style: italic;">Examples:</span></p>
+<p style="margin: 0px 0px 0px 24px;">LOG &quot;Start&quot;</p>
+<p style="margin: 0px 0px 0px 24px;">SETDURATION 1</p>
+<p style="margin: 0px 0px 0px 24px;">LOOP 3</p>
+<p style="margin: 0px 0px 0px 24px;"><span style="width:24px;display:inline-block">&nbsp;</span>LOG &quot;CPU Test&quot;</p>
+<p style="margin: 0px 0px 0px 24px;"><span style="width:24px;display:inline-block">&nbsp;</span>RUN MMX</p>
+<p style="margin: 0px 0px 0px 24px;">}</p>
+<p style="margin: 7px 0px 7px 0px;"><span style="color: #000000;">&nbsp;</span></p>
+<h2 class="p_Heading2"><span class="f_Heading2">SETDURATION COMMAND</span></h2>
+<p><span style="font-style: italic;">Syntax:</span></p>
+<p style="margin: 0px 0px 0px 24px;">SETDURATION &nbsp;&lt;Duration&gt;</p>
+<p style="margin: 0px 0px 0px 24px;">&nbsp;</p>
+<p><span style="font-style: italic;">Parameters:</span></p>
+<p style="margin: 0px 0px 0px 24px;">&lt;Duration&gt; &nbsp; &nbsp; &nbsp; &nbsp;Sets the test duration in minutes. Using this command is the same as changing the auto-stop period from the preferences window.</p>
+<p style="margin: 0px 0px 0px 24px;">&nbsp;</p>
+<p><span style="font-style: italic;">Examples:</span></p>
+<p style="margin: 0px 0px 0px 24px;">#Set the test duration to 90 seconds</p>
+<p style="margin: 0px 0px 0px 24px;">SETDURATION &nbsp;1.5</p>
+<p style="margin: 7px 0px 7px 0px;"><span style="color: #000000;">&nbsp;</span></p>
+<p style="margin: 7px 0px 7px 0px;"><span style="font-style: italic; font-weight: bold;">SETCYCLES COMMAND</span></p>
+<p><span style="font-style: italic;">Syntax</span>:</p>
+<p style="margin: 0px 0px 0px 24px;">SETCYCLES &lt;Number of test cycles&gt;</p>
+<p>&nbsp;</p>
+<p><span style="font-style: italic;">Parameters:</span></p>
+<p style="margin: 0px 0px 0px 24px;">&lt; Number of test cycles &gt; &nbsp; &nbsp; &nbsp; &nbsp;Sets the number of test cycles that will lead to an automatic stopping of the test runs after all selected tests have reached or exceeded this number of test cycles. Using this command is the same as changing the auto-stop number of cycles from the preferences window.</p>
+<p style="margin: 0px 0px 0px 24px;">&nbsp;</p>
+<p><span style="font-style: italic;">Examples</span></p>
+<p style="margin: 0px 0px 0px 24px;">#Set the number of test cycles to 1</p>
+<p style="margin: 0px 0px 0px 24px;">SETCYCLES 1</p>
+<p style="margin: 0px 0px 0px 24px;">&nbsp;</p>
+<p style="margin: 0px 0px 0px 24px;">#Run each test one cycle in series.</p>
+<p style="margin: 0px 0px 0px 24px;">SETCYCLES 1</p>
+<p style="margin: 0px 0px 0px 24px;">SETDURATION 0 </p>
+<p style="margin: 0px 0px 0px 24px;">LOG &quot;Run Maths Test”</p>
+<p style="margin: 0px 0px 0px 24px;">RUN MATHS</p>
+<p style="margin: 0px 0px 0px 24px;">LOG &quot;Run MMX Test”</p>
+<p style="margin: 0px 0px 0px 24px;">RUN MMX</p>
+<p style="margin: 0px 0px 0px 24px;">Etc…</p>
+<p class="p_ImageCaption"><span class="f_ImageCaption">&nbsp;</span></p>
+<h2 class="p_Heading2"><span class="f_Heading2">SETDUTYCYCLE COMMAND</span></h2>
+<p><span style="font-style: italic;">Synta</span>x:</p>
+<p style="margin: 0px 0px 0px 24px;">SETDUTYCYCLE &nbsp;&lt;Test Name&gt; &nbsp;&lt;Duty setting&gt;</p>
+<p>&nbsp;</p>
+<p><span style="font-style: italic;">Parameters:</span></p>
+<p style="margin: 0px 0px 0px 24px;">&lt;Test Name&gt; &nbsp; &nbsp; &nbsp; &nbsp;See below for a list of all test names.</p>
+<p style="margin: 0px 0px 0px 24px;">&lt;Duty setting&gt; &nbsp; &nbsp; &nbsp; &nbsp;Sets the duty cycle for the specified test to the value specified. Values must be between 1 and 100. Using this command is the same as changing the duty cycle value from the Test duty cycle window.</p>
+<p>&nbsp;</p>
+<p><span style="font-style: italic;">Examples:</span></p>
+<p style="margin: 0px 0px 0px 24px;">#Set the disk test to maximum load</p>
+<p style="margin: 0px 0px 0px 24px;">SETDUTYCYCLE &nbsp;DISK &nbsp;100</p>
+<p style="margin: 0px 0px 0px 24px;">#Set the CPU test to medium &nbsp;load</p>
+<p style="margin: 0px 0px 0px 24px;">SETDUTYCYCLE &nbsp;DISK &nbsp;65</p>
+<p style="margin: 7px 0px 7px 0px;"><span style="color: #000000;">&nbsp;</span></p>
+<h2 class="p_Heading2"><span class="f_Heading2">SETSERIAL COMMAND</span></h2>
+<p><span style="font-style: italic;">Syntax:</span></p>
+<p style="margin: 0px 0px 0px 24px;">SETSERIAL &lt; Serial Number &gt;</p>
+<p>&nbsp;</p>
+<p><span style="font-style: italic;">Parameters:</span></p>
+<p style="margin: 0px 0px 0px 24px;">&lt;Serial Number&gt; &nbsp; &nbsp; &nbsp; &nbsp;The serial number string. Must be enclosed in double quotes (“”).</p>
+<p>&nbsp;</p>
+<p><span style="font-style: italic;">Examples:</span></p>
+<p style="margin: 0px 0px 0px 24px;">#Set the serial number </p>
+<p style="margin: 0px 0px 0px 24px;">SETSERIAL &quot;1234-shdfgdhs-GHGHG&quot;</p>
+<p style="margin: 0px 0px 8px 38px;"><span style="color: #000000;">&nbsp;</span></p>
+<h2 class="p_Heading2"><span class="f_Heading2">SETMACHINETYPE COMMAND</span></h2>
+<p><span style="font-style: italic;">Syntax:</span></p>
+<p style="margin: 0px 0px 0px 24px;">SETMACHINETYPE &lt; Machine Name&gt;</p>
+<p><span style="font-style: italic;">Parameters:</span></p>
+<p style="margin: 0px 0px 0px 24px;">&lt; Machine Name &gt; &nbsp; &nbsp; &nbsp; &nbsp;The Machine Name. Must be enclosed in double quotes (“”).</p>
+<p><span style="font-style: italic;">Examples:</span></p>
+<p style="margin: 0px 0px 0px 24px;">#Set Machine type </p>
+<p style="margin: 0px 0px 0px 24px;">SETMACHINETYPE &quot;Dell XPS800&quot;</p>
+<p style="margin: 0px 0px 8px 38px;"><span style="color: #000000;">&nbsp;</span></p>
+<h2 class="p_Heading2"><span class="f_Heading2">SETNOTES COMMAND</span></h2>
+<p><span style="font-style: italic;">Syntax:</span></p>
+<p style="margin: 0px 0px 0px 24px;">SETNOTES &lt;Notes &gt;</p>
+<p>&nbsp;</p>
+<p><span style="font-style: italic;">Parameters:</span></p>
+<p style="margin: 0px 0px 0px 24px;">&lt; Notes &gt; &nbsp; &nbsp; &nbsp; &nbsp;The Notes. Must be enclosed in double quotes (“”).</p>
+<p>&nbsp;</p>
+<p><span style="font-style: italic;">Examples:</span></p>
+<p style="margin: 0px 0px 0px 24px;">#Set Notes </p>
+<p style="margin: 0px 0px 0px 24px;">SETNOTES &quot;Test notes defined by the external application.&quot;</p>
+<p style="margin: 0px 0px 8px 38px;"><span style="color: #000000;">&nbsp;</span></p>
+<h2 class="p_Heading2"><span class="f_Heading2">SETLOG COMMAND</span></h2>
+<p><span style="font-style: italic;">Syntax:</span></p>
+<p style="margin: 0px 0px 0px 24px;">SETLOG &quot;&lt;Filename&gt;&quot;</p>
+<p>&nbsp;</p>
+<p><span style="font-style: italic;">Parameters:</span></p>
+<p style="margin: 0px 0px 0px 24px;">&lt;Filename&gt; &nbsp; &nbsp; &nbsp; &nbsp;The name of the log file. The file name must be enclosed in double quotes (“”). This can be a path, eg &nbsp;&quot;/tmp/bitlog/&quot; and the default filename will be used, or a filename, eg &quot;/tmp/bitlog/scriptlog&quot; and BurnInTest will append .log to the filename before creation. </p>
+<p>&nbsp;</p>
+<p><span style="font-style: italic;">Examples:</span></p>
+<p style="margin: 0px 0px 0px 24px;">#Set log file with full path</p>
+<p style="margin: 0px 0px 0px 24px;">SETLOG &quot;/tmp/plugin_log&quot;</p>
+<p style="margin: 0px 0px 0px 24px;">#Set log file with path relative to BurnInTest application path </p>
+<p style="margin: 0px 0px 0px 24px;">SETLOG &quot;plugin_log&quot;</p>
+<p style="margin: 0px 0px 0px 24px;">&nbsp;</p>
+<p style="margin: 0px 0px 0px 24px;">Note:</p>
+<p style="margin: 0px 0px 0px 24px;">Loading a saved configuration file will overwrite this setting. The currently saved logging settings, such as trace settings, are used when loading a script. </p>
+<p style="margin: 0px 0px 8px 38px;"><span style="color: #000000;">&nbsp;</span></p>
+<h2 class="p_Heading2"><span class="f_Heading2">SETPCIE COMMAND</span></h2>
+<p><span style="font-style: italic;">Syntax:</span></p>
+<p style="margin: 0px 0px 0px 24px;">SETPCIE &lt;Num &gt;</p>
+<p>&nbsp;</p>
+<p><span style="font-style: italic;">Parameters:</span></p>
+<p style="margin: 0px 0px 0px 24px;">&lt; Num &gt; &nbsp; &nbsp; &nbsp; &nbsp;Number of PCIe cards to test</p>
+<p>&nbsp;</p>
+<p><span style="font-style: italic;">Examples:</span></p>
+<p style="margin: 0px 0px 0px 24px;">#Set Notes </p>
+<p style="margin: 0px 0px 0px 24px;">SETPCIE 2</p>
+<p style="margin: 0px 0px 0px 24px;">&nbsp;</p>
+<h2 class="p_Heading2"><span class="f_Heading2">SLEEP COMMAND</span></h2>
+<p><span style="font-style: italic;">Syntax:</span></p>
+<p style="margin: 0px 0px 0px 24px;">SLEEP &nbsp;&lt;Delay period&gt;</p>
+<p style="margin: 0px 0px 0px 24px;">&nbsp;</p>
+<p><span style="font-style: italic;">Parameters:</span></p>
+<p style="margin: 0px 0px 0px 24px;">&lt; Delay period &gt; &nbsp; &nbsp; &nbsp; &nbsp;An integer that represents the number of milliseconds to pause before continuing with the next command in the script..</p>
+<p style="margin: 0px 0px 0px 24px;">&nbsp;</p>
+<p><span style="font-style: italic;">Examples:</span></p>
+<p style="margin: 0px 0px 0px 24px;">#Pause 2 seconds</p>
+<p style="margin: 0px 0px 0px 24px;">SLEEP 2000</p>
+<p style="margin: 7px 0px 7px 0px;"><span style="color: #000000;">&nbsp;</span></p>
+<h2 class="p_Heading2"><span class="f_Heading2">RUN COMMAND</span></h2>
+<p><span style="font-style: italic;">Syntax:</span></p>
+<p style="margin: 0px 0px 0px 24px;">RUN &nbsp;&lt;Test Name&gt;</p>
+<p style="margin: 0px 0px 0px 24px;">&nbsp;</p>
+<p><span style="font-style: italic;">Parameters:</span></p>
+<p style="margin: 0px 0px 0px 24px;">&lt;Test Name&gt; &nbsp; &nbsp; &nbsp; &nbsp;See below for a list of all test names.</p>
+<p style="margin: 0px 0px 0px 24px;">&nbsp;</p>
+<p><span style="font-style: italic;">Examples: </span></p>
+<p style="margin: 0px 0px 0px 24px;">#Run the CD test with the current settings</p>
+<p style="margin: 0px 0px 0px 24px;">RUN CD</p>
+<p style="margin: 0px 0px 0px 24px;">#Run all the tests in the current configuration simultaneously</p>
+<p style="margin: 0px 0px 0px 24px;">RUN CONFIG</p>
+<p style="margin: 0px 0px 8px 38px;"><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="font-weight: bold;">&lt;Test Name&gt; Parameter</span></p>
+<p>The test name parameter can takes the following values. The first value “CONFIG” is special because it does not refer to the name of an individual test. When used with the RUN command it causes all tests in the current configuration file to be started simultaneously.</p>
+<p style="margin: 0px 0px 0px 24px;">CONFIG</p>
+<p style="margin: 0px 0px 0px 24px;">MATHS</p>
+<p style="margin: 0px 0px 0px 24px;">CD</p>
+<p style="margin: 0px 0px 0px 24px;">DISK</p>
+<p style="margin: 0px 0px 0px 24px;">MEMORY</p>
+<p style="margin: 0px 0px 0px 24px;">NETWORK</p>
+<p style="margin: 0px 0px 0px 24px;">PARALLEL</p>
+<p style="margin: 0px 0px 0px 24px;">SERIAL</p>
+<p style="margin: 0px 0px 0px 24px;">USB</p>
+<p style="margin: 0px 0px 0px 24px;">2D</p>
+<p style="margin: 0px 0px 0px 24px;">3D</p>
+<p style="margin: 0px 0px 0px 24px;">PCIE</p>
+<p>&nbsp;</p>
+<p>Example</p>
+<p style="margin: 0px 0px 0px 24px;">#Load my preferred test configuration</p>
+<p style="margin: 0px 0px 0px 24px;">LOAD &quot;MyConfiguration1.bitcfg&quot;</p>
+<p style="margin: 0px 0px 0px 24px;">#Override the test duration for all tests</p>
+<p style="margin: 0px 0px 0px 24px;">SETDURATION 60</p>
+<p style="margin: 0px 0px 0px 24px;">MESSAGE &quot;Click on OK to start test run&quot;</p>
+<p style="margin: 0px 0px 0px 24px;">RUN MATHS</p>
+<p style="margin: 0px 0px 0px 24px;">MESSAGE &quot;Insert test discs into both the CD and DVD drive&quot;</p>
+<p style="margin: 0px 0px 0px 24px;">RUN CD</p>
+<p style="margin: 0px 0px 0px 24px;">#Load my preferred test configuration for disk testing</p>
+<p style="margin: 0px 0px 0px 24px;">LOAD &quot;MyDiskConfig.bitcfg&quot;</p>
+<p style="margin: 0px 0px 0px 24px;">RUN CONFIG</p>
+<p style="margin: 7px 0px 7px 0px;"><span style="color: #000000;">&nbsp;</span></p>
+
+</td></tr></table>
+
+</body>
+</html>

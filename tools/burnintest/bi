@@ -1,0 +1,6 @@
+******************
+DETAILED EVENT LOG
+******************
+LOG NOTE: 2020-06-10 15:42:35, Status, BurnInTest v3.4 1002
+LOG NOTE: 2020-06-10 15:42:35, Starting script.
+LOG NOTE: 2020-06-10 15:42:36, Script , SETLOG "/tmp/bi.log" 

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Comment=Autostart test
+Exec=sh /data/hw_test/x.sh 
+Name=lxqt-config-monitor-autostart
+OnlyShowIn=LXQt
+Type=Application
+Version=1.0

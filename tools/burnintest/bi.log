@@ -1,0 +1,137 @@
+LOG NOTE: 2020-06-08 10:54:58, Status, BurnInTest v3.4 1002
+LOG NOTE: 2020-06-08 10:54:58, Starting script.
+LOG NOTE: 2020-06-08 10:54:59, Script , LOAD "/data/hw_test+tools/burnintest/bi-1s.cfg" 
+LOG NOTE: 2020-06-08 10:54:59, Script , SETDURATION 1.0 
+LOG NOTE: 2020-06-08 10:54:59, Script , SETSERIAL "12345" 
+LOG NOTE: 2020-06-08 10:54:59, Script , SETLOG "/tmp/bi.log" 
+LOG NOTE: 2020-06-08 10:56:17, Status, BurnInTest v3.4 1002
+LOG NOTE: 2020-06-08 10:56:17, Starting script.
+LOG NOTE: 2020-06-08 10:56:18, Script , LOAD "/data/hw_test+tools/burnintest/bi-1s.cfg" 
+LOG NOTE: 2020-06-08 10:56:18, Script , SETDURATION 1.0 
+LOG NOTE: 2020-06-08 10:56:18, Script , SETSERIAL "12345" 
+LOG NOTE: 2020-06-08 10:56:18, Script , SETLOG "/tmp/bi.log" 
+LOG NOTE: 2020-06-08 10:58:30, Status, BurnInTest v3.4 1002
+LOG NOTE: 2020-06-08 10:58:30, Starting script.
+LOG NOTE: 2020-06-08 10:58:31, Script , LOAD "/data/hw_test+tools/burnintest/bi-1s.cfg" 
+LOG NOTE: 2020-06-08 10:58:31, Script , SETDURATION 1.0 
+LOG NOTE: 2020-06-08 10:58:31, Script , SETSERIAL "12345" 
+LOG NOTE: 2020-06-08 10:58:31, Script , SETLOG "/tmp/bi.log" 
+LOG NOTE: 2020-06-08 11:05:39, Status, BurnInTest v3.4 1002
+LOG NOTE: 2020-06-08 11:05:39, Starting script.
+LOG NOTE: 2020-06-08 11:05:40, Script , LOAD "/data/hw_test+tools/burnintest/bi-1s.cfg" 
+LOG NOTE: 2020-06-08 11:05:40, Script , SETDURATION 1.0 
+LOG NOTE: 2020-06-08 11:05:40, Script , SETSERIAL "12345" 
+LOG NOTE: 2020-06-08 11:05:40, Script , SETLOG "/tmp/bi.log" 
+LOG NOTE: 2020-06-08 11:06:47, Status, BurnInTest v3.4 1002
+LOG NOTE: 2020-06-08 11:06:47, Starting script.
+LOG NOTE: 2020-06-08 11:06:48, Script , LOAD "/data/hw_test+tools/burnintest/bi-1s.cfg" 
+LOG NOTE: 2020-06-08 11:06:48, Script , SETDURATION 1.0 
+LOG NOTE: 2020-06-08 11:06:48, Script , SETSERIAL "12345" 
+LOG NOTE: 2020-06-08 11:06:48, Script , SETLOG "/tmp/bi.log" 
+LOG NOTE: 2020-06-08 11:08:23, Status, BurnInTest v3.4 1002
+LOG NOTE: 2020-06-08 11:08:23, Starting script.
+LOG NOTE: 2020-06-08 11:08:24, Script , LOAD "/data/hw_test+tools/burnintest/bi-1s.cfg" 
+LOG NOTE: 2020-06-08 11:08:24, Script , SETDURATION 0.5 
+LOG NOTE: 2020-06-08 11:08:24, Script , SETSERIAL "12345" 
+LOG NOTE: 2020-06-08 11:08:24, Script , SETLOG "/tmp/bi.log" 
+LOG NOTE: 2020-06-08 11:10:40, Status, BurnInTest v3.4 1002
+LOG NOTE: 2020-06-08 11:10:40, Starting script.
+LOG NOTE: 2020-06-08 11:10:41, Script , LOAD "/data/hw_test+tools/burnintest/bi-1s.cfg" 
+LOG NOTE: 2020-06-08 11:10:41, Script , SETDURATION 0.1 
+LOG NOTE: 2020-06-08 11:10:41, Script , SETSERIAL "12345" 
+LOG NOTE: 2020-06-08 11:10:41, Script , SETLOG "/tmp/bi.log" 
+LOG NOTE: 2020-06-08 11:11:43, Status, BurnInTest v3.4 1002
+LOG NOTE: 2020-06-08 11:11:43, Starting script.
+LOG NOTE: 2020-06-08 11:11:44, Script , LOAD "/data/hw_test+tools/burnintest/bi-1s.cfg" 
+LOG NOTE: 2020-06-08 11:11:44, Script , SETDURATION 0.5 
+LOG NOTE: 2020-06-08 11:11:44, Script , SETSERIAL "12345" 
+LOG NOTE: 2020-06-08 11:11:44, Script , SETLOG "/tmp/bi.log" 
+LOG NOTE: 2020-06-08 11:13:16, Status, BurnInTest v3.4 1002
+LOG NOTE: 2020-06-08 11:13:16, Starting script.
+LOG NOTE: 2020-06-08 11:13:17, Script , LOAD "/data/hw_test+tools/burnintest/bi-1s.cfg" 
+LOG NOTE: 2020-06-08 11:13:17, Script , SETDURATION 0.5 
+LOG NOTE: 2020-06-08 11:13:17, Script , SETSERIAL "12345" 
+LOG NOTE: 2020-06-08 11:13:17, Script , SETLOG "/tmp/bi.log" 
+LOG NOTE: 2020-06-08 11:16:33, Status, BurnInTest v3.4 1002
+LOG NOTE: 2020-06-08 11:16:33, Starting script.
+LOG NOTE: 2020-06-08 11:16:34, Script , EXECUTE "rm" "/tmp/bi.log" 
+LOG NOTE: 2020-06-08 11:16:34, Script , LOAD "/data/hw_test+tools/burnintest/bi-1s.cfg" 
+LOG NOTE: 2020-06-08 11:16:34, Script , SETDURATION 0.5 
+LOG NOTE: 2020-06-08 11:16:34, Script , SETSERIAL "12345" 
+LOG NOTE: 2020-06-08 11:16:34, Script , SETLOG "/tmp/bi.log" 
+LOG NOTE: 2020-06-08 11:17:07, Status, BurnInTest v3.4 1002
+LOG NOTE: 2020-06-08 11:17:07, Starting script.
+LOG NOTE: 2020-06-08 11:17:08, Script , EXECUTE "rm" "/tmp/bi.log" 
+LOG NOTE: 2020-06-08 11:17:08, Script , LOAD "/data/hw_test+tools/burnintest/bi-1s.cfg" 
+LOG NOTE: 2020-06-08 11:17:08, Script , SETDURATION 0.5 
+LOG NOTE: 2020-06-08 11:17:08, Script , SETSERIAL "12345" 
+LOG NOTE: 2020-06-08 11:17:08, Script , SETLOG "/tmp/bi.log" 
+LOG NOTE: 2020-06-08 11:18:17, Status, BurnInTest v3.4 1002
+LOG NOTE: 2020-06-08 11:18:17, Starting script.
+LOG NOTE: 2020-06-08 11:18:18, Script , LOAD "/data/hw_test+tools/burnintest/bi-1s.cfg" 
+LOG NOTE: 2020-06-08 11:18:18, Script , SETDURATION 0.5 
+LOG NOTE: 2020-06-08 11:18:18, Script , SETSERIAL "12345" 
+LOG NOTE: 2020-06-08 11:18:18, Script , SETLOG "/tmp/bi.log" 
+LOG NOTE: 2020-06-08 11:21:26, Status, BurnInTest v3.4 1002
+LOG NOTE: 2020-06-08 11:21:26, Starting script.
+LOG NOTE: 2020-06-08 11:21:27, Script , LOAD "/data/hw_test+tools/burnintest/bi-1s.cfg" 
+LOG NOTE: 2020-06-08 11:21:27, Script , SETSERIAL "12345" 
+LOG NOTE: 2020-06-08 11:21:27, Script , SETLOG "/tmp/bi.log" 
+LOG NOTE: 2020-06-08 11:23:07, Status, BurnInTest v3.4 1002
+LOG NOTE: 2020-06-08 11:23:07, Starting script.
+LOG NOTE: 2020-06-08 11:23:08, Script , LOAD "/data/hw_test+tools/burnintest/bi-1s.cfg" 
+LOG NOTE: 2020-06-08 11:23:08, Script , SETSERIAL "12345" 
+LOG NOTE: 2020-06-08 11:23:08, Script , SETLOG "/tmp/bi.log" 
+LOG NOTE: 2020-06-08 11:24:28, Status, BurnInTest v3.4 1002
+LOG NOTE: 2020-06-08 11:24:28, Starting script.
+LOG NOTE: 2020-06-08 11:24:29, Script , LOAD "/data/hw_test+tools/burnintest/bi-1s.cfg" 
+LOG NOTE: 2020-06-08 11:24:29, Script , SETSERIAL "12345" 
+LOG NOTE: 2020-06-08 11:24:29, Script , SETLOG "/tmp/bi.log" 
+LOG NOTE: 2020-06-08 11:25:06, Status, BurnInTest v3.4 1002
+LOG NOTE: 2020-06-08 11:25:06, Starting script.
+LOG NOTE: 2020-06-08 11:25:07, Script , LOAD "/data/hw_test+tools/burnintest/bi-1s.cfg" 
+LOG NOTE: 2020-06-08 11:25:07, Script , SETSERIAL "12345" 
+LOG NOTE: 2020-06-08 11:25:07, Script , SETLOG "/tmp/bi.log" 
+LOG NOTE: 2020-06-08 11:27:43, Status, BurnInTest v3.4 1002
+LOG NOTE: 2020-06-08 11:27:43, Starting script.
+LOG NOTE: 2020-06-08 11:27:44, Script , LOAD "/data/hw_test+tools/burnintest/bi-1s.cfg" 
+LOG NOTE: 2020-06-08 11:27:44, Script , SETSERIAL "12345" 
+LOG NOTE: 2020-06-08 11:27:44, Script , SETLOG "/tmp/bi.log" 
+LOG NOTE: 2020-06-08 11:30:44, Status, BurnInTest v3.4 1002
+LOG NOTE: 2020-06-08 11:30:44, Starting script.
+LOG NOTE: 2020-06-08 11:30:45, Script , SETSERIAL "12345" 
+LOG NOTE: 2020-06-08 11:30:45, Script , SETLOG "/tmp/bi.log" 
+LOG NOTE: 2020-06-08 11:31:39, Status, BurnInTest v3.4 1002
+LOG NOTE: 2020-06-08 11:31:39, Starting script.
+LOG NOTE: 2020-06-08 11:31:40, Script , LOAD "/data/hw_test+tools/burnintest/bi-1s.cfg" 
+LOG NOTE: 2020-06-08 11:31:40, Script , SETDUTYCYCLE SERIAL 100 
+LOG NOTE: 2020-06-08 11:31:40, Script , SETDURATION 1 
+LOG NOTE: 2020-06-08 11:31:40, Script , RUN SERIAL 
+LOG NOTE: 2020-06-08 11:31:41, Status, Starting test run
+LOG NOTE: 2020-06-08 11:31:41, Status, Completed started test run
+LOG NOTE: 2020-06-08 11:31:44, Status, Test run stopped
+
+**************
+RESULT SUMMARY
+**************
+Test Start time: - 
+Test Stop time: Mon Jun  8 11:31:44 2020
+Test Duration: - 
+
+                          Test Name   Cycles   Operations      Result  Errors   Last Error
+TEST RUN PASSED
+
+*********************
+SERIOUS ERROR SUMMARY
+*********************
+
+-----------------------------------------------------------------------------------------------------
+******************
+DETAILED EVENT LOG
+******************
+LOG NOTE: 2020-06-08 11:31:47, Script , EXIT 
+LOG NOTE: 2020-06-08 11:33:39, Status, BurnInTest v3.4 1002
+LOG NOTE: 2020-06-08 11:33:39, Starting script.
+LOG NOTE: 2020-06-08 11:33:40, Script , LOAD "/home/production/hw_test/tools/burnintest/bi-1s.cfg" 
+LOG NOTE: 2020-06-09 15:18:08, Status, BurnInTest v3.4 1002
+LOG NOTE: 2020-06-10 15:31:00, Status, BurnInTest v3.4 1002

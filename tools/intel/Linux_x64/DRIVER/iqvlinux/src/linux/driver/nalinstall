@@ -1,0 +1,87 @@
+#!/bin/sh
+
+#  Copyright(c) 1999 - 2015 Intel Corporation. All rights reserved.
+#
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of version 2 of the GNU General Public License as
+# published by the Free Software Foundation.
+#
+#  This program is distributed in the hope that it will be useful, but
+#  WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with this program; if not, write to the Free Software
+#  Foundation, Inc., 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA.
+#  The full GNU General Public License is included in this distribution
+#  in the file called LICENSE.GPL.
+#
+#  Contact Information:
+#  e1000-devel Mailing List <e1000-devel@lists.sourceforge.net>
+#  Intel Corporation, 5200 N.E. Elam Young Parkway, Hillsboro, OR 97124-6497
+
+if [ "$1" = "" ]
+then
+    SOURCE_DIR=$PWD
+else
+    SOURCE_DIR=$1
+fi
+
+MachineType=$(uname -i)
+KernelVersion=$(uname -r)
+
+K_VERSION=`uname -r| cut -c1-3 | sed 's/2\.[56]/2\.6/'`
+
+DriverName=iqvlinux
+if [ "$K_VERSION" = "2.4" ]
+then
+    DriverFileName=$DriverName.o
+else
+    DriverFileName=$DriverName.ko
+fi
+
+if [ ! -e $SOURCE_DIR/$DriverFileName ]
+then
+    echo "Error: unable to find driver file ($DriverFileName) in $SOURCE_DIR"
+    exit 1
+fi
+
+DriverDirectoryName=/lib/modules/$KernelVersion/kernel/drivers/net
+
+if [ -e $DriverDirectoryName/$DriverFileName ]
+then
+    echo "Removing existing $DriverFileName driver"
+    rm -fv $DriverDirectoryName/$DriverFileName
+    Status=$?
+    if [ $Status -ne 0 ]
+    then
+        echo "Error: failed to remove driver"
+        exit $Status
+    fi
+fi
+
+echo "Copying $DriverFileName driver file to /lib/modules directory"
+cp -v $SOURCE_DIR/$DriverFileName $DriverDirectoryName
+Status=$?
+if [ $Status -ne 0 ]
+then
+    echo "Error: failed to copy driver"
+    exit $Status
+fi
+
+# Install the node and driver
+IsDriverLoaded=`lsmod | cut -c1-${#DriverName} | grep $DriverName`
+if [ ${#IsDriverLoaded} -gt 0 ]
+then
+    echo "Try and unload the old driver..."
+    rmmod -s $DriverName
+fi
+
+if [ -e $DriverDirectoryName/$DriverFileName ]
+then
+	depmod -A
+    echo "Installed!"
+else
+    echo "Error: Failed to install the $DriverFileName driver"
+fi

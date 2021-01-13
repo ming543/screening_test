@@ -1,0 +1,43 @@
+# Let NetworkManager manage all devices on this system
+network:
+  version: 2
+  renderer: NetworkManager
+  ethernets:
+          eno1:
+                  dhcp4: yes
+          enp1s0:
+                  dhcp4: no
+                  addresses:
+                          - 192.168.101.254/24
+                  gateway4: 192.168.101.254
+                  nameservers:
+                          addresses: [8.8.8.8, 1.1.1.1]
+          enp2s0:
+                  dhcp4: no
+                  addresses:
+                          - 192.168.102.254/24
+                  gateway4: 192.168.102.254
+                  nameservers:
+                          addresses: [8.8.8.8, 1.1.1.1]
+          enp3s0:
+                  dhcp4: no
+                  addresses:
+                          - 192.168.103.254/24
+                  gateway4: 192.168.103.254
+                  nameservers:
+                          addresses: [8.8.8.8, 1.1.1.1]
+          enp4s0:
+                  dhcp4: no
+                  addresses:
+                          - 192.168.104.254/24
+                  gateway4: 192.168.104.254
+                  nameservers:
+                          addresses: [8.8.8.8, 1.1.1.1]
+          enp5s0:
+                  dhcp4: no
+                  addresses:
+                          - 192.168.105.254/24
+                  gateway4: 192.168.105.254
+                  nameservers:
+                          addresses: [8.8.8.8, 1.1.1.1]
+

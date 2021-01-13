@@ -1,0 +1,88 @@
+1. Check Environment:
+  1. CentOS / RedHat / Ubuntu
+  2. Use Terminal
+    1. Use command "sudo su" or "sudo" for Driver access
+2. Compile Install:
+  1. Use command for prior to CentOS 7 / RedHat 7:
+    1. sudo yum group install "Development Tools" , or
+    2. sudo yum groupinstall "Development Tools"
+  2. Use command for CentOS 7 / RedHat 7 and above:
+    1. sudo yum --setopt=group_package_types=mandatory,default,optional group install "Development Tools" , or
+    2. sudo yum --setopt=group_package_types=mandatory,default,optional groupinstall "Development Tools"
+  3. Use command for Ubuntu 12 and above:
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get install build-essential
+  4. Verify gcc installation:
+    whereis gcc
+    gcc --version , or
+    gcc -v
+3. In cgoslx-x64-1.03.021 folder, take check with a file named "Makefile", and type it as follow:
+  1. Build / Rebuild:
+    # It needed on "Rebuild" procedure.
+    make clean
+    # Build
+    make
+  3. Install:
+    # It will install driver, library, binary to system folders.
+    sudo make install
+4. In U7-100,
+  1. we need:
+    1. cgoslx-x64-1.03.021/CgosDrv
+      Driver
+    2. cgoslx-x64-1.03.021\CgosLib
+      Communication API with Driver
+    3. cgoslx-x64-1.03.021\CgosMon
+      Monitor
+      Use command "sudo cgosmon" after "Install" procedure.
+    4. cgoslx-x64-1.03.021\CgosDump
+      Board Information
+      Use command "sudo cgosdump" after "Install" procedure.
+    5. cgoslx-x64-1.03.021\CgosI2CgpioSample
+      GPIO Sample
+      Use command "sudo cgosi2cgpiosample" after "Install" procedure.
+    6. cgoslx-x64-1.03.021\CgosI2CgpioLoopback
+      GPIO Loopback Testing
+      Use command "sudo cgosi2cgpioloopback" after "Install" procedure.
+
+PS:
+  1. Use commands for beginer:
+    # Substitute super user
+    sudo su
+    # And type password for password-protected account.
+    # Change direction path
+    cd cgoslx-x64-1.03.021
+    # Clean up for rebuild
+    make clean
+    # Build all
+    make
+    # Install driver, library, binary to system folders.
+    make instal
+
+    # Sample Test
+    cgosi2cgpiosample
+    # Hardware note:
+    #   1. GPIO is non isolated DIO circuit.
+    #   2. GPI for GPIO input
+    #   3. GPO for GPIO output
+    #   4. GPIO potential range is 3.3 V ~ 0 V.
+    #   5. It needs to use pin 1, pin 2, pin 11, pin 12 as reference potential.
+    # First show GPIO[15:0] direction config, GPI[15:0] last potential state, GPO[15:0] potential setting.
+    # Type "Q" and Enter for quit.
+    # Type you want and Enter for step choice.
+    # Main setup:
+    #   1. "Pin Config" for 1-pin setup direction config.
+    #   2. "Pin GPO" for 1-pin setup GPO potential state.
+    #   3. "All Pins Config" for 16-pin setup direction config by hexadecimal.
+    #   4. "All Pins GPO" for 16-pin setup GPO potential state by hexadecimal.
+
+    # Loopback Test
+    # Setup GPIO_0 ~ GPIO_7, GPIO_8 ~ GPIO_15 for GPIO[7:0]-GPIO[15:8] connection test.
+    cgosi2cgpioloopback
+    # Hardware note:
+    #   1. GPIO Loopback test does not need to use pin 1, pin 2, pin 11, pin 12.
+    #   2. GPIO[7:0] connect to GPIO[15:8]. pin 3 - pin 13, pin 4 - pin 14, .. , and so on.
+    # Main:
+    #   1. It setup direction config as GPO[7:0], GPI[15:8] to test.
+    #   2. It setup direction config as GPI[7:0], GPO[15:8] to test.
+    #   3. It will report the result about all pins loopback testing.

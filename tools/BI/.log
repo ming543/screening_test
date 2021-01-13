@@ -1,0 +1,92 @@
+PassMark BurnInTest Log file  -  http://www.passmark.com
+========================================================
+
+BurnInTest v3.1 (1002) Linux 64bit
+Logging detail level: Normal
+******************
+SYSTEM SUMMARY
+******************
+Linux 4.9.0-8-amd64
+1 x Intel(R) Core(TM) i5-4210U CPU @ 1.70GHz
+8.0 GB RAM
+
+GENERAL
+System Name: slax
+Motherboard Manufacturer: LENOVO
+Motherboard Model: Cherry 3A
+Motherboard Version: 31900058WIN
+Bios Manufacturer: LENOVO
+Bios Version: 7CCN60WW
+Bios Release Date: 07/21/2014
+Serial Number: 111
+
+CPU
+CPU Manufacturer: GenuineIntel
+CPU Type: Intel(R) Core(TM) i5-4210U CPU @ 1.70GHz
+Speed: 2401.8 MHz
+CPUID: Family 6, Model 69, Stepping 1
+Socket:  U3E1
+Physical CPU's: 1
+Cores per CPU: 2
+Hyperthreading: Yes
+CPU Features: MMX SSE SSE2 SSE3 SSE4.1 SSE4.2 PAE VMX 
+Cache per CPU package:
+L1 Cache: 32 kB
+L2 Cache: 256 kB
+
+MEMORY
+Total Memory: 7914 MB
+Available Memory: 7435 MB
+Memory Devices:
+DIMM0 : DDR3, 8192 MB, 1600 MHz
+DIMM1 : Unknown, No Module Installed, Unknown
+DIMM2 : Unknown, No Module Installed, Unknown
+DIMM3 : Unknown, No Module Installed, Unknown
+******************
+DETAILED EVENT LOG
+******************
+LOG NOTE: 2018-11-22 03:12:16, Script , LOAD "/run/initramfs/memory/data/burnintest/" 
+LOG NOTE: 2018-11-22 03:12:16, Script , RUN CONFIG 
+LOG NOTE: 2018-11-22 03:12:17, Status, Starting test run
+SERIOUS: 2018-11-22 03:12:18, Disk, : File system not mounted
+LOG NOTE: 2018-11-22 03:12:18, Status, Completed started test run
+WARNING: 2018-11-22 03:12:19, CD/DVD, : Could not determine type of Passmark optical test disk
+WARNING: 2018-11-22 03:12:22, CD/DVD, : Could not determine type of Passmark optical test disk
+WARNING: 2018-11-22 03:12:25, CD/DVD, : Could not determine type of Passmark optical test disk
+WARNING: 2018-11-22 03:12:28, CD/DVD, : Could not determine type of Passmark optical test disk
+WARNING: 2018-11-22 03:12:31, CD/DVD, : Could not determine type of Passmark optical test disk
+WARNING: 2018-11-22 03:12:34, CD/DVD, : Could not determine type of Passmark optical test disk
+WARNING: 2018-11-22 03:12:37, CD/DVD, : Could not determine type of Passmark optical test disk
+WARNING: 2018-11-22 03:12:40, CD/DVD, : Could not determine type of Passmark optical test disk
+WARNING: 2018-11-22 03:12:43, CD/DVD, : Could not determine type of Passmark optical test disk
+WARNING: 2018-11-22 03:12:46, CD/DVD, : Could not determine type of Passmark optical test disk
+WARNING: 2018-11-22 03:12:49, CD/DVD, : Could not determine type of Passmark optical test disk
+LOG NOTE: 2018-11-22 03:12:50, Status, Test run stopped
+
+**************
+RESULT SUMMARY
+**************
+Test Start time: Thu Nov 22 03:12:17 2018 
+Test Stop time: Thu Nov 22 03:12:46 2018
+Test Duration: 000h 00m 29s 
+
+                          Test Name   Cycles   Operations      Result  Errors   Last Error
+                        CPU - Maths   36       23.611 Billion  PASS    0        No errors
+                       Memory (RAM)   0        402 Million     PASS    0        No errors
+                        2D Graphics   9        732400          PASS    0        No errors
+                             Disk:    0        0               FAIL    1        File system not mounted
+        Network: wlp2s0 (127.0.0.1)   667      5.874 Million   PASS    0        No errors
+                           CD/DVD:    0        0               FAIL    11       Could not determine type of Passmark optical test disk
+TEST RUN FAILED
+
+*********************
+SERIOUS ERROR SUMMARY
+*********************
+SERIOUS: 2018-11-22 03:12:18, Disk, SERIOUS: File system not mounted (x 1)
+
+-----------------------------------------------------------------------------------------------------
+******************
+DETAILED EVENT LOG
+******************
+LOG NOTE: 2018-11-22 03:12:52, Script , EXIT 
+LOG NOTE: 2018-11-23 16:38:38, Status, BurnInTest v3.1 1002

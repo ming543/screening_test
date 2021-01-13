@@ -1,0 +1,373 @@
+#!/bin/bash
+# REVISON:R4
+# Script for system function test by EFCO Sam
+
+#For Debug
+#set -xv
+
+#LOC="/home/pi"
+LOC="/run/initramfs/memory/data"
+SCR_LOC="$LOC/HW_test_script"
+TMP_LOC="$LOC/HW_test_script/tmp"
+LIB_LOC="$LOC/HW_test_script/lib"
+LOG_LOC="$LOC/logfile"
+MODEL_LOG="$LOC/HW_test_script/tmp/model.tmp"
+
+
+#input spec of $1 BI to script ex.disk/nodisk $2 is BI time
+bi_cli_auto(){
+	BI_LOG=/tmp/BiTLog2.log
+	BURN_LOC=/run/initramfs/memory/data/HW_test_script/tools/BI
+	rm -f $BI_LOG
+	rm -f $BURN_LOC/cmdline_config.txt
+	case $1 in
+        	"disk")
+        		cp $BURN_LOC/cmdline_config.disk $BURN_LOC/cmdline_config.txt
+        		;;
+        	"nodisk")
+        		cp $BURN_LOC/cmdline_config.nodisk $BURN_LOC/cmdline_config.txt
+        		;;
+        	"noserial")
+        		cp $BURN_LOC/cmdline_config.noserial $BURN_LOC/cmdline_config.txt
+        		;;
+       		*)
+        		"Usage {disk|nodisk|}"
+        		;;
+	esac
+	$BURN_LOC/bit_cmd_line_x64 -D $2
+
+	RUN_T=$(($2 /60))
+	BI_TIME_CHK=$(grep "Test Duration" "$BI_LOG" | cut -c 18 )
+	if [ $BI_TIME_CHK = $RUN_T ]; then
+		echo "****** BI time $RUN_T hour passed!, spec $2 mins! ******" | tee -a $LOG_LOC/$SN_LOG.log
+	else
+		echo "****** BI time $RUN_T hour failed!, spec $2 mins!  ******" | tee -a $LOG_LOC/$SN_LOG.log 
+		fail_red
+	fi
+	
+	BICHK=$(grep "TEST RUN PASSED" "$BI_LOG" | cut -c 10-15 )
+	if [ $BICHK = "PASSED" ]; then
+		echo "****** Passmark BI result passed! ******" | tee -a $LOG_LOC/$SN_LOG.log
+	else
+		echo "****** Passmark BI result failed!  ******" | tee -a $LOG_LOC/$SN_LOG.log 
+		fail_red
+	fi
+}
+
+
+
+bi_log_copy(){
+	#copy bi log to SN_log
+	BI_LOG=/tmp/BiTLog2.log
+	echo " " | tee -a $LOG_LOC/$SN_LOG.log >/dev/null
+	echo " " | tee -a $LOG_LOC/$SN_LOG.log >/dev/null
+	echo " " | tee -a $LOG_LOC/$SN_LOG.log >/dev/null
+	echo "************************************" | tee -a $LOG_LOC/$SN_LOG.log >/dev/null
+	echo "****** The BI LOG start here! ******" | tee -a $LOG_LOC/$SN_LOG.log >/dev/null
+	echo "************************************" | tee -a $LOG_LOC/$SN_LOG.log >/dev/null
+	echo " " | tee -a $LOG_LOC/$SN_LOG.log >/dev/null
+	echo " " | tee -a $LOG_LOC/$SN_LOG.log >/dev/null
+	echo " " | tee -a $LOG_LOC/$SN_LOG.log >/dev/null
+	cat $BI_LOG >> $LOG_LOC/$SN_LOG.log
+}
+
+cpu_temp_check(){
+	TEMP_LOG=$TMP_LOC/temp.tmp
+	rm -r $TEMP_LOG
+	sensors -A | tee -a $TEMP_LOG
+	CPU_TEMP_LOG=$(sensors -A |grep "Core 0" |awk '{print $3}' |cut -c 1-3)
+	SYS_TEMP_LOG=$(sensors -A |grep "temp1" |awk '{print $2}' |cut -c 1-3)
+	#echo "****** Syetem temp $SYS_TEMP_LOG C !  ******" | tee -a $LOG_LOC/$SN_LOG.log
+
+	if [ $CPU_TEMP_LOG -ge $1 ] && [ $CPU_TEMP_LOG -le $2 ];then
+		echo "****** CPU temp $CPU_TEMP_LOG C passed!, spec $1 - $2 C  ******" | tee -a $LOG_LOC/$SN_LOG.log	
+	else
+		echo "****** CPU temp $CPU_TEMP_LOG C failed!, spec $1 - $2 C  ******" | tee -a $LOG_LOC/$SN_LOG.log
+		fail_red
+	fi
+}
+
+cpu_temp_check_cat(){
+	TEMP_LOG=$TMP_LOC/temp.tmp
+	rm -r $TEMP_LOG
+	sensors -A | tee -a $TEMP_LOG
+	sensors -A | grep "id 0" | tee -a $LOG_LOC/$SN_LOG.log
+	CPU_TEMP_LOG=$(cat /sys/class/hwmon/hwmon2/temp1_input | cut -c 1-2)
+	SYS_TEMP_LOG=$(cat /sys/class/hwmon/hwmon1/temp1_input | cut -c 1-2)
+	echo "****** Syetem temp $SYS_TEMP_LOG C !  ******" | tee -a $LOG_LOC/$SN_LOG.log
+	if [ $CPU_TEMP_LOG -ge $1 ] && [ $CPU_TEMP_LOG -le $2 ];then
+		echo "****** CPU temp $CPU_TEMP_LOG C passed!, spec $1 - $2 C  ******" | tee -a $LOG_LOC/$SN_LOG.log	
+	else
+		echo "****** CPU temp $CPU_TEMP_LOG C failed!, spec $1 - $2 C  ******" | tee -a $LOG_LOC/$SN_LOG.log
+		fail_red
+	fi
+}
+
+fail_red(){
+	#show big fail red
+	printf "\E[1;31;48m"
+	echo " ************************************************* "
+	echo " "
+	echo " FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL "
+	echo " FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL "
+	echo " FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL "
+	echo " FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL "
+	echo " FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL "
+	echo " FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL "
+	echo " FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL "
+	echo " FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL "
+	echo " FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL "
+	echo " FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL_FAIL "
+	echo " "
+	echo " ************************************************* "
+	printf "\E[0m"
+	echo ""
+	echo "****** TEST_FAILED! ****** " >> $LOG_LOC/$SN_LOG.log
+	mv $LOG_LOC/$SN_LOG.log $LOG_LOC/$SN_LOG-FAIL.log
+	read -p "Press Enter to end test" end
+	exit 1
+}
+
+hwclock_check(){
+	BT=$(hwclock | cut -c 1-4)
+	if [ $BT = $1 ]; then
+		echo "****** Check BIOS time $BT passed!, spec $1 !  ******" | tee -a $LOG_LOC/$SN_LOG.log
+	else
+		echo "****** Check BIOS time $BT failed!, spec $1 !  ******" | tee -a $LOG_LOC/$SN_LOG.log 
+		fail_red
+	fi
+}
+
+#1=device 2=mac_head 3=another mac_head
+lan_mac_check(){
+	echo " " | tee -a $LOG_LOC/$SN_LOG.log
+	echo "****** LAN MAC check!  ******" | tee -a $LOG_LOC/$SN_LOG.log
+	cat "/sys/class/net/$1/address"
+	if [ $? = 0 ];then
+		echo " " | tee -a $LOG_LOC/$SN_LOG.log
+		echo "****** Check $1 device !  ******" | tee -a $LOG_LOC/$SN_LOG.log
+		LAN=$1
+	else
+		echo " " | tee -a $LOG_LOC/$SN_LOG.log
+		echo "****** Check enp2s0 device !  ******" | tee -a $LOG_LOC/$SN_LOG.log
+		LAN=enp2s0
+	fi
+	MAC=$(cat "/sys/class/net/$LAN/address")
+	MAC_HEAD=$(cat "/sys/class/net/$LAN/address" | cut -c 1-8)
+	if [ $MAC_HEAD = $2 ] || [ $MAC_HEAD = $3 ]; then
+		echo "****** Check $LAN MAC $MAC passed!, spec $2 $3!  ******" | tee -a $LOG_LOC/$SN_LOG.log
+	else
+		echo "****** Check $LAN MAC $MAC failed!, spec $2 $3!  ******" | tee -a $LOG_LOC/$SN_LOG.log 
+		fail_red
+	fi
+}
+
+lan_mac_nocheck(){
+	listVar="eno1 enp1s0 enp2s0 enp3s0 enp4s0 enp5s0 enp6s0"
+	echo " " | tee -a $LOG_LOC/$SN_LOG.log
+	echo "****** LAN MAC Record!  ******" | tee -a $LOG_LOC/$SN_LOG.log
+	for i in $listVar; do
+		MAC=$(cat "/sys/class/net/$i/address")
+		echo "****** Get $i MAC is $MAC! ******" | tee -a $LOG_LOC/$SN_LOG.log
+	done
+}
+
+eb_lan_down(){
+	sudo ifdown $1
+	if [ $? = 0 ];then
+		echo " " | tee -a $LOG_LOC/$SN_LOG.log
+		echo "****** Check $1 ifdown pass !  ******" | tee -a $LOG_LOC/$SN_LOG.log
+	else
+		echo " " | tee -a $LOG_LOC/$SN_LOG.log
+		echo "****** Check $1 ifdown fail !  ******" | tee -a $LOG_LOC/$SN_LOG.log
+		fail_red
+	fi
+	
+}
+
+lan_ping_check(){
+	sudo ifup $1
+	sleep 2
+	ping -c1 $2
+	if [ $? = 0 ];then
+		echo " " | tee -a $LOG_LOC/$SN_LOG.log
+		echo "****** Check $1 ping $2 pass !  ******" | tee -a $LOG_LOC/$SN_LOG.log
+	else
+		echo " " | tee -a $LOG_LOC/$SN_LOG.log
+		echo "****** Check $1 ping $2 fail !  ******" | tee -a $LOG_LOC/$SN_LOG.log
+		fail_red
+	fi
+}
+
+
+eb_lan_up(){
+	sudo ifup $1
+	if [ $? = 0 ];then
+		echo " " | tee -a $LOG_LOC/$SN_LOG.log
+		echo "****** Check $1 ifup pass !  ******" | tee -a $LOG_LOC/$SN_LOG.log
+	else
+		echo " " | tee -a $LOG_LOC/$SN_LOG.log
+		echo "****** Check $1 ifup fail !  ******" | tee -a $LOG_LOC/$SN_LOG.log
+		fail_red
+	fi
+}
+
+pass_green(){
+	clear
+	echo "Serial Number:$SN "
+	#show big green pass
+	printf "\E[1;32;48m"
+	echo " ************************************************* "
+	echo " "
+	echo " PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS "
+	echo " PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS "
+	echo " PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS "
+	echo " PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS "
+	echo " PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS "
+	echo " PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS "
+	echo " PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS "
+	echo " PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS "
+	echo " PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS "
+	echo " PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS "
+	echo " "
+	echo " ************************************************* "
+	printf "\E[0m"
+	echo " " | tee -a $LOG_LOC/$SN_LOG.log
+	echo "****** ALL_TEST_PASSED! ****** " >> $LOG_LOC/$SN_LOG.log
+	mv $LOG_LOC/$SN_LOG.log $LOG_LOC/$SN_LOG-PASS.log
+	read -p "Press Enter to end test" end
+	exit 0
+}
+
+pass_green_poweroff(){
+	clear
+	echo "Serial Number:$SN "
+	#show big green pass
+	printf "\E[1;32;48m"
+	echo " ************************************************* "
+	echo " "
+	echo " PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS "
+	echo " PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS "
+	echo " PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS "
+	echo " PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS "
+	echo " PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS "
+	echo " PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS "
+	echo " PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS "
+	echo " PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS "
+	echo " PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS "
+	echo " PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS_PASS "
+	echo " "
+	echo " ************************************************* "
+	printf "\E[0m"
+	echo " " | tee -a $LOG_LOC/$SN_LOG.log
+	echo "****** ALL_TEST_PASSED! ****** " >> $LOG_LOC/$SN_LOG.log
+	mv $LOG_LOC/$SN_LOG.log $LOG_LOC/$SN_LOG-PASS.log
+	sleep 2
+	poweroff
+	exit 0
+}
+
+rs232_loop_test(){
+	COM_LOG=$TMP_LOC/com.tmp
+	rm -r $COM_LOG
+	(stty raw; cat > $COM_LOG) < $1 &
+	PID=$! #save PID to kill cat
+	echo "5555AAAA" > $1 # send command to serial port
+	sleep 5s # wait for response
+	kill $PID # kill cat process
+	LCHK=$(grep "5555AAAA" "$COM_LOG" )
+	if [ $LCHK == "5555AAAA" ]; then
+		echo "****** RS232 port $1 loopback test passed!  ******" | tee -a $LOG_LOC/$SN_LOG.log
+	else
+		echo "****** RS232 port $1 loopback test failed!  ******" | tee -a $LOG_LOC/$SN_LOG.log 
+		fail_red
+	fi
+}
+
+rs232_loop_test_old(){
+	COM_LOG=$TMP_LOC/com.tmp
+	rm -r $COM_LOG
+	stty -F $1 115200 raw -echo #config serial port
+	exec 3<$1 #redirect serial output to FD 3
+	cat <&3 > $COM_LOG & #redirect serial output to file
+	PID=$! #save PID to kill cat
+	echo "5555AAAA" > $1 # send command to serial port
+	sleep 0.5s # wait for response
+	kill $PID # kill cat process
+	exec 3<&- #free FD 3
+	LCHK=$(grep "5555AAAA" "$COM_LOG" )
+	if [ $LCHK == "5555AAAA" ]; then
+		echo "****** RS232 port $1 loopback test passed!  ******" | tee -a $LOG_LOC/$SN_LOG.log
+	else
+		echo "****** RS232 port $1 loopback test failed!  ******" | tee -a $LOG_LOC/$SN_LOG.log 
+		fail_red
+	fi
+}
+
+serial_check(){
+	echo " " | tee -a $LOG_LOC/$SN_LOG.log
+	echo "****** serial device check!  ******" | tee -a $LOG_LOC/$SN_LOG.log
+	dmesg |grep serial: |grep $1 |tee -a $LOG_LOC/$SN_LOG.log
+	SERIAL=$(dmesg |grep serial: |grep $1 |awk '{print $4}')
+	if [ $SERIAL = $1 ] ; then
+		echo "****** Check serial $SERIAL passed!, spec $1!  ******" | tee -a $LOG_LOC/$SN_LOG.log
+	else
+		echo "****** Check serial $SERIAL failed!, spec $1!  ******" | tee -a $LOG_LOC/$SN_LOG.log 
+		fail_red
+	fi
+}
+
+sn_get(){
+	#---Get SN---
+	SN_TMP=$TMP_LOC/sn.tmp
+	rm -f $SN_TMP
+	#MODEL=$(<$TMP_LOC/model.tmp)
+ 	MODEL=$0
+	#clear
+	read -p "Please input SN: " SN 
+	SN_LOG=$SN-$MODEL-$(date '+%Y%m%d%H%M%S')
+	#echo $SN-$MODEL-$(date '+%Y%m%d%H%M%S') > $SN_TMP #log with date
+	##echo $SN-$MODEL-$(date '+%H%M%S')  > $SN_TMP #log without date
+	#SN_LOG=$(<$SN_TMP)
+	#echo Model: $0 >> $LOG_LOC/$SN_LOG.log
+	#cat $TMP_LOC/model.tmp >> $LOG_LOC/$SN_LOG.log   
+	echo Serial Number: $SN >> $LOG_LOC/$SN_LOG.log	
+}
+
+usb_dev_check (){
+	echo " " | tee -a $LOG_LOC/$SN_LOG.log
+	echo "****** USB device check!  ******" | tee -a $LOG_LOC/$SN_LOG.log
+	USB_dev=$(lsusb |grep $1 |awk '{print $4}')
+	lsusb |grep $1 |tee -a $LOG_LOC/$SN_LOG.log
+	
+	if [ $USB_dev = $1 ]; then
+		echo "****** Check USB dev $1 passed !  ******" | tee -a $LOG_LOC/$SN_LOG.log
+	else
+		echo "****** Check USB dev $1 failed !  ******" | tee -a $LOG_LOC/$SN_LOG.log 
+		fail_red
+	fi
+}
+
+usb_id_check (){
+	echo " " | tee -a $LOG_LOC/$SN_LOG.log
+	echo "****** USB ID check!  ******" | tee -a $LOG_LOC/$SN_LOG.log
+	USB_ID=$(lsusb |grep $1 |awk '{print $6}')
+	lsusb |grep $1 |tee -a $LOG_LOC/$SN_LOG.log
+	
+	if [ $USB_ID = $1 ]; then
+		echo "****** Check USB ID $1 passed !  ******" | tee -a $LOG_LOC/$SN_LOG.log
+	else
+		echo "****** Check USB ID $1 failed !  ******" | tee -a $LOG_LOC/$SN_LOG.log 
+		fail_red
+	fi
+}
+
+
+
+
+
+
+
+
+
+

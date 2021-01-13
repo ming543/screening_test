@@ -1,0 +1,85 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+   <title>Command Line Parameters</title>
+   <meta name="generator" content="Help &amp; Manual" />
+   <meta name="keywords" content="Command line arguments,Command line parameters" />
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="description" content="" />
+   <meta name="picture" content="" />
+   <link type="text/css" href="default.css" rel="stylesheet" />
+   <style type="text/css">
+     body { margin: 0px; background: #FFFFFF; }
+   </style>
+   <script type="text/javascript" src="jquery.js"></script>
+   <script type="text/javascript" src="helpman_settings.js"></script>
+   <script type="text/javascript" src="helpman_topicinit.js"></script>
+
+   <script type="text/javascript">
+     HMSyncTOC("index.html", "command_line_parameters.htm");
+   </script>
+   <script type="text/javascript" src="highlight.js"></script>
+   <script type="text/javascript">
+     $(document).ready(function(){highlight();});
+   </script>
+</head>
+<body>
+
+
+<table style="width:100%; border:none; border-spacing:0px; padding:5px; background:#649CCC">
+  <tr style="vertical-align:middle">
+    <td style="text-align:left">
+      <h1 class="p_Heading1"><span class="f_Heading1">Command Line Parameters</span></h1>
+
+    </td>
+    <td style="text-align:right">
+     <a href="overview.htm">Top</a>&nbsp;
+     <a href="machine_identity.htm">Previous</a>&nbsp;
+     <a href="preparing_a_customer_test_cert.htm">Next</a>
+    </td>
+  </tr>
+</table>
+
+
+<!-- Placeholder for topic body. -->
+<table style="width:100%;border:none;border-spacing:0px"><tr style="vertical-align:top"><td style="text-align:left;padding:5px">
+<p>-C configname</p>
+<p>BurnInTest will load the config file specified.</p>
+<p>&nbsp;</p>
+<p> -D duration</p>
+<p>Sets the test duration to the value specified &nbsp;in minutes</p>
+<p>&nbsp;</p>
+<p> -X duration <br />
+Sets the test duration to the value specified &nbsp;in cycles</p>
+<p>&nbsp;</p>
+<p>-d </p>
+<p>Enables debug mode which will create a debug.log file in the same directory as the BurnInTest executable</p>
+<p>&nbsp;</p>
+<p>-S script</p>
+<p>Load the script file specified, the script will start automatically when using the option. </p>
+<p>&nbsp;</p>
+<p>-R milliseconds</p>
+<p>Automatically start starts test after specified value in milliseconds </p>
+<p>&nbsp;</p>
+<p>-v<br />
+Print version information and exit</p>
+<p>&nbsp;</p>
+<p>-J</p>
+<p>Cycle Disk test patterns between test files (when cyclic set). This option has been added to allow multiple test patterns to be used across very large disks, without waiting for the disk to be completely tested with one pattern before moving on to the next disk test pattern.</p>
+<p>&nbsp;</p>
+<p>-K</p>
+<p>Keep the disk test data files on disk when an error is logged. Best used in conjunction with the &quot;Stop on Error&quot; option. This setting will also save the random data blocks used if running the &quot;Random Data&quot; and &quot;Random Data and Seeking&quot;disk tests.</p>
+<p>&nbsp;</p>
+<p>-b blocksize</p>
+<p>Set disk test block size as KB (eg -b 16 is a 16384 byte block size). </p>
+<p>&nbsp;</p>
+<p>-M </p>
+<p>Automatically display the Machine ID Window when BurnInTest is started. This can be useful in a production line scenario to allow the tester to enter test specific information in a more automated fashion.</p>
+<p>&nbsp;</p>
+
+</td></tr></table>
+
+</body>
+</html>

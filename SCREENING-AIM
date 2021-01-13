@@ -1,0 +1,36 @@
+#!/bin/bash
+# Script for system screening test by EFCO Sam
+
+#For Debug
+#set -xv
+
+#---Start Function---
+. ./sc_func
+
+
+screening_start
+
+
+#check wakeup run or not
+wakeup_check
+
+
+#wakeup_rtc
+#Get MAC for log
+#lan_mac_check enp1s0 80:7b:85
+
+#check BIOS time from internet
+#hwclock_check 2021
+
+#BI for $3 x 10m
+bi_stress +20 +85 10
+
+#RS232 loopback test
+#serial_loop_test /dev/ttyS0
+
+#input spec of cpu temp low high limit to script ex.20 70
+#cpu_temp_check +30 +95
+
+#Show ALL TEST PASS to log
+pass_green_dialog
+

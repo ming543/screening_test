@@ -1,0 +1,184 @@
+
+-------------------------- Begin Diagnostic Testing ---------------------------
+CELO exit status = 18
+
+-------------------------- Begin Diagnostic Testing ---------------------------
+CELO exit status = 18
+
+-------------------------- Begin Diagnostic Testing ---------------------------
+
+End of Line Diagnostic Utility  v1.26.01.00
+Intel(R) I210 Gigabit Network Connection, Network Addr=807B85500338
+Card 1: Bus=1 Dev=0 Function=0
+Fri Jul  3 14:44:33 2020
+Pass 1 on Card 1 at 14:44 Register test PASSED 
+Pass 1 on Card 1 at 14:44 EEPROM test PASSED 
+Pass 1 on Card 1 at 14:44 FIFO test PASSED 
+
+End of Line Diagnostic Utility  v1.26.01.00
+Intel(R) I210 Gigabit Network Connection, Network Addr=00139524B0CD
+Card 2: Bus=4 Dev=0 Function=0
+Fri Jul  3 14:44:46 2020
+Pass 1 on Card 2 at 14:44 Register test PASSED 
+Pass 1 on Card 2 at 14:44 EEPROM test PASSED 
+Pass 1 on Card 2 at 14:44 FIFO test PASSED 
+CELO exit status = 0
+
+-------------------------- Begin Diagnostic Testing ---------------------------
+
+End of Line Diagnostic Utility  v1.26.01.00
+Intel(R) I210 Gigabit Network Connection, Network Addr=807B85500338
+Card 1: Bus=1 Dev=0 Function=0
+Fri Jul  3 14:45:08 2020
+Pass 1 on Card 1 at 14:45 Register test PASSED 
+Pass 1 on Card 1 at 14:45 EEPROM test PASSED 
+Pass 1 on Card 1 at 14:45 FIFO test PASSED 
+CELO exit status = 0
+
+-------------------------- Begin Diagnostic Testing ---------------------------
+CELO exit status = 18
+
+-------------------------- Begin Diagnostic Testing ---------------------------
+CELO exit status = 18
+
+-------------------------- Begin Diagnostic Testing ---------------------------
+CELO exit status = 18
+
+-------------------------- Begin Diagnostic Testing ---------------------------
+CELO exit status = 18
+
+-------------------------- Begin Diagnostic Testing ---------------------------
+
+End of Line Diagnostic Utility  v1.26.01.00
+Intel(R) I210 Gigabit Network Connection, Network Addr=807B85500338
+Card 1: Bus=1 Dev=0 Function=0
+Fri Jul  3 14:47:58 2020
+CELO exit status = 0
+
+-------------------------- Begin Diagnostic Testing ---------------------------
+CELO exit status = 18
+
+-------------------------- Begin Diagnostic Testing ---------------------------
+CELO exit status = 18
+
+-------------------------- Begin Diagnostic Testing ---------------------------
+CELO exit status = 18
+
+-------------------------- Begin Diagnostic Testing ---------------------------
+CELO exit status = 18
+
+-------------------------- Begin Diagnostic Testing ---------------------------
+
+End of Line Diagnostic Utility  v1.26.01.00
+Intel(R) I210 Gigabit Network Connection, Network Addr=807B85500338
+Card 1: Bus=1 Dev=0 Function=0
+Fri Jul  3 14:49:59 2020
+CELO exit status = 0
+
+-------------------------- Begin Diagnostic Testing ---------------------------
+
+End of Line Diagnostic Utility  v1.26.01.00
+Intel(R) I210 Gigabit Network Connection, Network Addr=807B85500338
+Card 1: Bus=1 Dev=0 Function=0
+Fri Jul  3 14:50:11 2020
+CELO exit status = 0
+
+-------------------------- Begin Diagnostic Testing ---------------------------
+
+End of Line Diagnostic Utility  v1.26.01.00
+Intel(R) I210 Gigabit Network Connection, Network Addr=807B85500338
+Card 1: Bus=1 Dev=0 Function=0
+Fri Jul  3 14:50:21 2020
+CELO exit status = 0
+
+-------------------------- Begin Diagnostic Testing ---------------------------
+CELO exit status = 18
+
+-------------------------- Begin Diagnostic Testing ---------------------------
+
+End of Line Diagnostic Utility  v1.26.01.00
+Intel(R) I210 Gigabit Network Connection, Network Addr=807B85500338
+Card 1: Bus=1 Dev=0 Function=0
+Fri Jul  3 14:52:16 2020
+CELO exit status = 0
+
+-------------------------- Begin Diagnostic Testing ---------------------------
+CELO exit status = 2
+
+-------------------------- Begin Diagnostic Testing ---------------------------
+
+End of Line Diagnostic Utility  v1.26.01.00
+Intel(R) I210 Gigabit Network Connection, Network Addr=00139524B0CD
+Card 2: Bus=4 Dev=0 Function=0
+Fri Jul  3 14:52:41 2020
+CELO exit status = 0
+
+-------------------------- Begin Diagnostic Testing ---------------------------
+
+End of Line Diagnostic Utility  v1.26.01.00
+Intel(R) I210 Gigabit Network Connection, Network Addr=807B85500338
+Card 1: Bus=1 Dev=0 Function=0
+Fri Jul  3 14:53:00 2020
+CELO exit status = 0
+
+-------------------------- Begin Diagnostic Testing ---------------------------
+
+End of Line Diagnostic Utility  v1.26.01.00
+Intel(R) I210 Gigabit Network Connection, Network Addr=807B85500338
+Card 1: Bus=1 Dev=0 Function=0
+Fri Jul  3 14:53:09 2020
+CELO exit status = 0
+
+-------------------------- Begin Diagnostic Testing ---------------------------
+
+End of Line Diagnostic Utility  v1.26.01.00
+Intel(R) I210 Gigabit Network Connection, Network Addr=807B85500338
+Card 1: Bus=1 Dev=0 Function=0
+Fri Jul  3 14:53:12 2020
+CELO exit status = 0
+
+-------------------------- Begin Diagnostic Testing ---------------------------
+
+End of Line Diagnostic Utility  v1.26.01.00
+Intel(R) I210 Gigabit Network Connection, Network Addr=807B85500338
+Card 1: Bus=1 Dev=0 Function=0
+Fri Jul  3 14:54:31 2020
+Pass 1 on Card 1 at 14:54 Register test PASSED 
+Pass 1 on Card 1 at 14:54 EEPROM test PASSED 
+Pass 1 on Card 1 at 14:54 FIFO test PASSED 
+
+End of Line Diagnostic Utility  v1.26.01.00
+Intel(R) I210 Gigabit Network Connection, Network Addr=00139524B0CD
+Card 2: Bus=4 Dev=0 Function=0
+Fri Jul  3 14:54:43 2020
+Pass 1 on Card 2 at 14:54 Register test PASSED 
+Pass 1 on Card 2 at 14:54 EEPROM test PASSED 
+Pass 1 on Card 2 at 14:54 FIFO test PASSED 
+CELO exit status = 0
+
+-------------------------- Begin Diagnostic Testing ---------------------------
+
+End of Line Diagnostic Utility  v1.26.01.00
+Intel(R) I210 Gigabit Network Connection, Network Addr=807B85500338
+Card 1: Bus=1 Dev=0 Function=0
+Fri Jul  3 15:07:01 2020
+CELO exit status = 0
+
+-------------------------- Begin Diagnostic Testing ---------------------------
+
+End of Line Diagnostic Utility  v1.26.01.00
+Intel(R) I210 Gigabit Network Connection, Network Addr=807B85500338
+Card 1: Bus=1 Dev=0 Function=0
+Fri Jul  3 15:08:47 2020
+CELO exit status = 0
+
+-------------------------- Begin Diagnostic Testing ---------------------------
+
+End of Line Diagnostic Utility  v1.26.01.00
+Intel(R) I210 Gigabit Network Connection, Network Addr=807B855010D8
+Card 1: Bus=1 Dev=0 Function=0
+Wed Jul 29 09:41:01 2020
+Pass 1 on Card 1 at 09:41 Register test PASSED 
+Pass 1 on Card 1 at 09:41 EEPROM test PASSED 
+Pass 1 on Card 1 at 09:41 FIFO test PASSED 
+CELO exit status = 37

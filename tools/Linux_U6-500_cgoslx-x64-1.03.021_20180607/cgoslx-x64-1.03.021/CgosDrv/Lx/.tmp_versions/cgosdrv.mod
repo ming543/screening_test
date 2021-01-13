@@ -1,0 +1,2 @@
+/root/Desktop/module_GPIO_linux/cgoslx_BC_GPIO-x64/cgoslx-x64-1.03.021/CgosDrv/Lx/cgosdrv.ko
+/root/Desktop/module_GPIO_linux/cgoslx_BC_GPIO-x64/cgoslx-x64-1.03.021/CgosDrv/Lx/DrvLx.o /root/Desktop/module_GPIO_linux/cgoslx_BC_GPIO-x64/cgoslx-x64-1.03.021/CgosDrv/Lx/DrvOsaLx.o /root/Desktop/module_GPIO_linux/cgoslx_BC_GPIO-x64/cgoslx-x64-1.03.021/CgosDrv/Lx/../Cgeb.o /root/Desktop/module_GPIO_linux/cgoslx_BC_GPIO-x64/cgoslx-x64-1.03.021/CgosDrv/Lx/../CgosDrv.o
